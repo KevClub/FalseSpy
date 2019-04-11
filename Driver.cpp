@@ -49,7 +49,7 @@ int main()
   busStop.setRole("Visiter");
   locations[1] = busStop;
 
-  //~~~~~~~~~~~~~~~~~~~ Pentagon Location ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  //~~~~~~~~~~~~~~~~~~~ Army Base Location ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     Location armyBase("Army Base", "Base of operations for an army set out to war.");
     armyBase.setRole("Captian");
     armyBase.setRole("Prissoner of War");
