@@ -10,24 +10,33 @@ using namespace std;
 class Location {
 private:
   string name;
+  string description;
   string roles[10];
-  int length = 0;
+  int length;
 
 public:
   //default constructor
   Location()
-  { }
+  {
+    length =0;
+  }
 
   //Constructor
-  Location(string n)
+  Location(string n, string d)
   {
     name = n;
+    description = d;
+    length = 0;
   }
 
   //Get the name of the location
   string getName()
   {
     return name;
+  }
+  string getDesc()
+  {
+    return description;
   }
 
   //set the roles in the array

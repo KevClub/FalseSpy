@@ -6,19 +6,22 @@
 #include <ctime>
 #include <cstdlib>
 #include "Locations.h"
+#include "Players.h"
 
 using namespace std;
 
+//Prototypes
 int randomNumGen(int);
-
 Location getLocation(Location*, int);
 
+//main function
 int main()
 {
   int LOCATION_SIZE = 2;
   Location locations[LOCATION_SIZE];
 
-  Location school("School");
+//~~~~~~~~~~~~~~~~~~~ School Location ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Location school("School", "Place where young people attend to learn.");
   school.setRole("Teacher");
   school.setRole("Student");
   school.setRole("Janitor");
@@ -31,7 +34,9 @@ int main()
   school.setRole("Visiter");
   locations[0] = school;
 
-  Location busStop("Bus Stop");
+
+//~~~~~~~~~~~~~~~~~~~ Bus Stop Location ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Location busStop("Bus Stop", "Place where you wait for the public bus to pick you up.");
   busStop.setRole("Bus Driver");
   busStop.setRole("Student");
   busStop.setRole("Constrution Worker");
@@ -39,17 +44,68 @@ int main()
   busStop.setRole("Upset Obese Child");
   busStop.setRole("Busy Business Man");
   busStop.setRole("Deilan");
-  busStop.setRole("Chester");
+  busStop.setRole("Driver");
   busStop.setRole("Baby man");
-  busStop.setRole("Bryan");
+  busStop.setRole("Visiter");
   locations[1] = busStop;
 
-  Location yourLocation = getLocation(locations, randomNumGen(LOCATION_SIZE));
+//Get current Location
+Location yourLocation = getLocation(locations, randomNumGen(LOCATION_SIZE));
 
-  cout << "Your random number is: " << randomNumGen(LOCATION_SIZE) << endl;
-  cout << "The location is :" << yourLocation.getName() << endl;
-  cout << "Your role is :" << yourLocation.getRole(randomNumGen(10 )) << endl;
+
+//Players
+Player players[10];
+int numPlayers = 0;
+
+//Bryan
+Player bryan("Bryan");
+bryan.setRole(yourLocation.getRole(randomNumGen(10)));
+players[numPlayers] = bryan;
+numPlayers++;
+
+//Chester
+Player chester("Chester");
+chester.setRole(yourLocation.getRole(randomNumGen(10)));
+players[numPlayers] = chester;
+numPlayers++;
+
+//Seth
+Player seth("Seth");
+seth.setRole(yourLocation.getRole(randomNumGen(10)));
+players[numPlayers] = seth;
+numPlayers++;
+
+//Make someone the spy
+Player spy = players[randomNumGen(numPlayers)];
+for (int i =0; i < numPlayers; i++)
+{
+  if(players[i].getName() == spy.getName())
+  {
+    players[i].spyValue(true);
+    players[i].setRole("Spy");
+  }
 }
+spy.spyValue(true);
+spy.setRole("Spy");
+
+//UI
+  cout << "Your random number is: " << randomNumGen(LOCATION_SIZE) << endl;
+  cout << "The location is: " << yourLocation.getName() << endl;
+  cout << "Description: " << yourLocation.getDesc() << endl;
+  cout << "Your role is: " << seth.getRole() << endl;
+  cout << "The spy was: " << spy.getName() << endl;
+
+  cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+  cout << "Spy: " << spy.getName() << endl << spy.getRole() << endl << spy.isSpy() << endl;
+  cout << "Seth: " << seth.getName() << endl << seth.getRole() << endl << seth.isSpy() << endl;
+  cout << "Bryan: " << bryan.getName() << endl << bryan.getRole() << endl << bryan.isSpy() << endl;
+  cout << "Chester: " << chester.getName() << endl << chester.getRole() << endl << chester.isSpy() << endl;
+
+  return 0;
+}
+
+
+////~~~~~~~~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 //Creates a random number and returns it.
 int randomNumGen(int length)
