@@ -17,7 +17,7 @@ Location getLocation(Location*, int);
 //main function
 int main()
 {
-  int LOCATION_SIZE = 2;
+  int LOCATION_SIZE = 3;
   Location locations[LOCATION_SIZE];
 
 //~~~~~~~~~~~~~~~~~~~ School Location ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -48,6 +48,20 @@ int main()
   busStop.setRole("Baby man");
   busStop.setRole("Visiter");
   locations[1] = busStop;
+
+  //~~~~~~~~~~~~~~~~~~~ Pentagon Location ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Location armyBase("Army Base", "Base of operations for an army set out to war.");
+    armyBase.setRole("Captian");
+    armyBase.setRole("Prissoner of War");
+    armyBase.setRole("Cadet");
+    armyBase.setRole("Armsman");
+    armyBase.setRole("Navy Seal");
+    armyBase.setRole("Private");
+    armyBase.setRole("Drill Sergent");
+    armyBase.setRole("General");
+    armyBase.setRole("Veteran");
+    armyBase.setRole("Injured Soldier");
+    locations[2] = armyBase;
 
 //Get current Location
 Location yourLocation = getLocation(locations, randomNumGen(LOCATION_SIZE));
