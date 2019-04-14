@@ -1,3 +1,6 @@
+/*
+    Header file containing Player for spyfall game.
+*/
 #ifndef PLAYERS_H
 #define PLAYERS_H
 #include <iostream>
