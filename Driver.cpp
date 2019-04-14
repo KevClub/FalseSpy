@@ -17,7 +17,7 @@ Location getLocation(Location*, int);
 //main function
 int main()
 {
-  int LOCATION_SIZE = 3;
+  const int LOCATION_SIZE = 3;
   Location locations[LOCATION_SIZE];
   srand((unsigned)time(0));
 
