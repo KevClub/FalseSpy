@@ -40,7 +40,7 @@ public:
   }
 
   //set the roles in the array
-  void setRole(string r)
+  void addRole(string r)
   {
     if(length <= 10)
     {

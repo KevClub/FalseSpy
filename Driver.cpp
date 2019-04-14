@@ -17,52 +17,94 @@ Location getLocation(Location*, int);
 //main function
 int main()
 {
-  const int LOCATION_SIZE = 3;
+  const int LOCATION_SIZE = 6;
   Location locations[LOCATION_SIZE];
   srand((unsigned)time(0));
 
 //~~~~~~~~~~~~~~~~~~~ School Location ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  Location school("School", "Place where young people attend to learn.");
-  school.setRole("Teacher");
-  school.setRole("Student");
-  school.setRole("Janitor");
-  school.setRole("Gym Coach");
-  school.setRole("Freshman");
-  school.setRole("Student President");
-  school.setRole("Principal");
-  school.setRole("Visiter");
-  school.setRole("Teacher");
-  school.setRole("Visiter");
+  Location school("High School", "Place where young people attend to learn.");
+  school.addRole("Teacher");
+  school.addRole("Student");
+  school.addRole("Janitor");
+  school.addRole("Gym Coach");
+  school.addRole("Freshman");
+  school.addRole("Student President");
+  school.addRole("Principal");
+  school.addRole("Visiter");
+  school.addRole("Teacher");
+  school.addRole("Visiter");
   locations[0] = school;
 
 
 //~~~~~~~~~~~~~~~~~~~ Bus Stop Location ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   Location busStop("Bus Stop", "Place where you wait for the public bus to pick you up.");
-  busStop.setRole("Bus Driver");
-  busStop.setRole("Student");
-  busStop.setRole("Constrution Worker");
-  busStop.setRole("Single Mother");
-  busStop.setRole("Upset Obese Child");
-  busStop.setRole("Busy Business Man");
-  busStop.setRole("Deilan");
-  busStop.setRole("Driver");
-  busStop.setRole("Baby man");
-  busStop.setRole("Visiter");
+  busStop.addRole("Bus Driver");
+  busStop.addRole("Student");
+  busStop.addRole("Constrution Worker");
+  busStop.addRole("Single Mother");
+  busStop.addRole("Upset Obese Child");
+  busStop.addRole("Busy Business Man");
+  busStop.addRole("Deilan");
+  busStop.addRole("Driver");
+  busStop.addRole("Baby man");
+  busStop.addRole("Visitor");
   locations[1] = busStop;
 
   //~~~~~~~~~~~~~~~~~~~ Army Base Location ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    Location armyBase("Army Base", "Base of operations for an army set out to war.");
-    armyBase.setRole("Captian");
-    armyBase.setRole("Prissoner of War");
-    armyBase.setRole("Cadet");
-    armyBase.setRole("Armsman");
-    armyBase.setRole("Navy Seal");
-    armyBase.setRole("Private");
-    armyBase.setRole("Drill Sergent");
-    armyBase.setRole("General");
-    armyBase.setRole("Veteran");
-    armyBase.setRole("Injured Soldier");
-    locations[2] = armyBase;
+  Location armyBase("Army Base", "Base of operations for an army set out to war.");
+  armyBase.addRole("Captian");
+  armyBase.addRole("Prissoner of War");
+  armyBase.addRole("Cadet");
+  armyBase.addRole("Armsman");
+  armyBase.addRole("Navy Seal");
+  armyBase.addRole("Private");
+  armyBase.addRole("Drill Sergent");
+  armyBase.addRole("General");
+  armyBase.addRole("Veteran");
+  armyBase.addRole("Injured Soldier");
+  locations[2] = armyBase;
+
+  //~~~~~~~~~~~~~~~~~~~ Wedding Location ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Location wedding("Wedding", "At a ceramony of 2 loved ones coming together to live.");
+  wedding.addRole("Bride");
+  wedding.addRole("Groom");
+  wedding.addRole("Best Man");
+  wedding.addRole("Priest");
+  wedding.addRole("Bride's Maid");
+  wedding.addRole("Drunk Uncle");
+  wedding.addRole("Wedding Crasher");
+  wedding.addRole("Bride's Father");
+  wedding.addRole("High School Friend");
+  wedding.addRole("Ring Bearer");
+  locations[3] = wedding;
+
+  //~~~~~~~~~~~~~~~~~~~ Anime Convention Location ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Location anime("Anime Convention", "Nerdy group of people who enjoy animated Japanese cartoons gather in one place.");
+  anime.addRole("");
+  anime.addRole("");
+  anime.addRole("");
+  anime.addRole("");
+  anime.addRole("");
+  anime.addRole("");
+  anime.addRole("");
+  anime.addRole("");
+  anime.addRole("");
+  anime.addRole("");
+  locations[4] = anime;
+
+  //~~~~~~~~~~~~~~~~~~~ Anime Convention Location ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Location conference("Conference Room", "the place where the bois go when they get payed more than women.");
+  conference.addRole("CEO");
+  conference.addRole("");
+  conference.addRole("");
+  conference.addRole("");
+  conference.addRole("");
+  conference.addRole("");
+  conference.addRole("");
+  conference.addRole("");
+  conference.addRole("");
+  conference.addRole("");
+  locations[5] = conference;
 
 //Get current Location
 Location yourLocation = getLocation(locations, randomNumGen(LOCATION_SIZE));
@@ -103,23 +145,26 @@ for(int i =0; i < numPlayers; i++)
 }
 
 //UI
+cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[ Game ]~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
   if(seth->getRole() != "Spy")
   {
-    cout << "Your random number is: " << randomNumGen(LOCATION_SIZE) << endl;
     cout << "The location is: " << yourLocation.getName() << endl;
     cout << "Description: " << yourLocation.getDesc() << endl;
     cout << "Your role is: " << seth->getRole() << endl;
+    cout << endl << "The game plays out..." << endl << endl;
     cout << "The spy was: " << spy->getName() << endl;
   }
   else if(seth->getRole() == "Spy")
   {
-    cout << "Your random number is: " << randomNumGen(LOCATION_SIZE) << endl;
     cout << "Your role is: " << seth->getRole() << endl;
     cout << "Try and guess the location without being caught." << endl;
+    cout << endl << "The game plays out..." << endl << endl;
     cout << "The spy was: You" << endl;
   }
+
+
   cout << endl;
-  cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+  cout << "~~~~~~~~~~~~~~~~~~~~~~~[ DEV KNOWLEDGE ]~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
   cout << "Spy: " << spy->getName() << endl << spy->getRole() << endl << spy->isSpy() << endl;
   cout << "Seth: " << seth->getName() << endl << seth->getRole() << endl << seth->isSpy() << endl;
   cout << "Bryan: " << bryan->getName() << endl << bryan->getRole() << endl << bryan->isSpy() << endl;
@@ -142,7 +187,7 @@ delete seth;
 int randomNumGen(int length)
 {
     int random_integer;
-    random_integer = (rand()%length);
+    random_integer = (rand() % length);
     return random_integer;
 }
 
