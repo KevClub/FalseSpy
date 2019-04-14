@@ -22,6 +22,10 @@ public:
       name = n;
       spy = false;
     }
+    void setName(string n)
+    {
+      name = n;
+    }
     void setRole(string r)
     {
       role = r;

@@ -19,6 +19,7 @@ int main()
 {
   int LOCATION_SIZE = 3;
   Location locations[LOCATION_SIZE];
+  srand((unsigned)time(0));
 
 //~~~~~~~~~~~~~~~~~~~ School Location ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   Location school("School", "Place where young people attend to learn.");
@@ -68,52 +69,68 @@ Location yourLocation = getLocation(locations, randomNumGen(LOCATION_SIZE));
 
 
 //Players
-Player players[10];
+Player *players[10];
 int numPlayers = 0;
 
 //Bryan
-Player bryan("Bryan");
-bryan.setRole(yourLocation.getRole(randomNumGen(10)));
+Player* bryan = new Player("Bryan");
+bryan->setRole(yourLocation.getRole(randomNumGen(10)));
 players[numPlayers] = bryan;
 numPlayers++;
 
 //Chester
-Player chester("Chester");
-chester.setRole(yourLocation.getRole(randomNumGen(10)));
+Player* chester = new Player("Chester");
+chester->setRole(yourLocation.getRole(randomNumGen(10)));
 players[numPlayers] = chester;
 numPlayers++;
 
 //Seth
-Player seth("Seth");
-seth.setRole(yourLocation.getRole(randomNumGen(10)));
+Player* seth = new Player("Seth");
+seth->setRole(yourLocation.getRole(randomNumGen(10)));
 players[numPlayers] = seth;
 numPlayers++;
 
 //Make someone the spy
-Player spy = players[randomNumGen(numPlayers)];
-for (int i =0; i < numPlayers; i++)
+Player* spy = new Player();
+*spy = *players[randomNumGen(numPlayers)];
+for(int i =0; i < numPlayers; i++)
 {
-  if(players[i].getName() == spy.getName())
+  if(players[i]->getName() == spy->getName())
   {
-    players[i].spyValue(true);
-    players[i].setRole("Spy");
+    players[i]->setRole("Spy");
+    players[i]->spyValue(true);
   }
 }
-spy.spyValue(true);
-spy.setRole("Spy");
 
 //UI
-  cout << "Your random number is: " << randomNumGen(LOCATION_SIZE) << endl;
-  cout << "The location is: " << yourLocation.getName() << endl;
-  cout << "Description: " << yourLocation.getDesc() << endl;
-  cout << "Your role is: " << seth.getRole() << endl;
-  cout << "The spy was: " << spy.getName() << endl;
+  if(seth->getRole() != "Spy")
+  {
+    cout << "Your random number is: " << randomNumGen(LOCATION_SIZE) << endl;
+    cout << "The location is: " << yourLocation.getName() << endl;
+    cout << "Description: " << yourLocation.getDesc() << endl;
+    cout << "Your role is: " << seth->getRole() << endl;
+    cout << "The spy was: " << spy->getName() << endl;
+  }
+  else if(seth->getRole() == "Spy")
+  {
+    cout << "Your random number is: " << randomNumGen(LOCATION_SIZE) << endl;
+    cout << "Your role is: " << seth->getRole() << endl;
+    cout << "Try and guess the location without being caught." << endl;
+    cout << "The spy was: You" << endl;
+  }
+  cout << endl;
+  cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+  cout << "Spy: " << spy->getName() << endl << spy->getRole() << endl << spy->isSpy() << endl;
+  cout << "Seth: " << seth->getName() << endl << seth->getRole() << endl << seth->isSpy() << endl;
+  cout << "Bryan: " << bryan->getName() << endl << bryan->getRole() << endl << bryan->isSpy() << endl;
+  cout << "Chester: " << chester->getName() << endl << chester->getRole() << endl << chester->isSpy() << endl;
 
-  cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-  cout << "Spy: " << spy.getName() << endl << spy.getRole() << endl << spy.isSpy() << endl;
-  cout << "Seth: " << seth.getName() << endl << seth.getRole() << endl << seth.isSpy() << endl;
-  cout << "Bryan: " << bryan.getName() << endl << bryan.getRole() << endl << bryan.isSpy() << endl;
-  cout << "Chester: " << chester.getName() << endl << chester.getRole() << endl << chester.isSpy() << endl;
+
+delete spy;
+delete bryan;
+delete chester;
+delete seth;
+//delete players;
 
   return 0;
 }
@@ -124,8 +141,6 @@ spy.setRole("Spy");
 //Creates a random number and returns it.
 int randomNumGen(int length)
 {
-  //Error: isn't completely random
-  srand((unsigned)time(0));
     int random_integer;
     random_integer = (rand()%length);
     return random_integer;
