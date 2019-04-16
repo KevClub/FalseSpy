@@ -80,30 +80,30 @@ int main()
 
   //~~~~~~~~~~~~~~~~~~~ Anime Convention Location ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   Location anime("Anime Convention", "Nerdy group of people who enjoy animated Japanese cartoons gather in one place.");
-  anime.addRole("");
-  anime.addRole("");
-  anime.addRole("");
-  anime.addRole("");
-  anime.addRole("");
-  anime.addRole("");
-  anime.addRole("");
-  anime.addRole("");
-  anime.addRole("");
-  anime.addRole("");
+  anime.addRole("Goku (from DBZ)");
+  anime.addRole("Naruto (from naruto)");
+  anime.addRole("Saskai (from naruto)");
+  anime.addRole("Shinichi (from parasyte)");
+  anime.addRole("Attendent");
+  anime.addRole("Lost (confused) Grandmother");
+  anime.addRole("Host");
+  anime.addRole("BodyGuard");
+  anime.addRole("Manga Author");
+  anime.addRole("Worker");
   locations[4] = anime;
 
   //~~~~~~~~~~~~~~~~~~~ Anime Convention Location ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   Location conference("Conference Room", "the place where the bois go when they get payed more than women.");
   conference.addRole("CEO");
-  conference.addRole("");
-  conference.addRole("");
-  conference.addRole("");
-  conference.addRole("");
-  conference.addRole("");
-  conference.addRole("");
-  conference.addRole("");
-  conference.addRole("");
-  conference.addRole("");
+  conference.addRole("Networker");
+  conference.addRole("Sales Person");
+  conference.addRole("Person who walked in on the meeting");
+  conference.addRole("Organizer");
+  conference.addRole("Finance Chair/Treasurer");
+  conference.addRole("Presentation Team");
+  conference.addRole("Presentation Team");
+  conference.addRole("Presentation Team");
+  conference.addRole("Body Guard");
   locations[5] = conference;
 
 //Get current Location
@@ -146,6 +146,7 @@ for(int i =0; i < numPlayers; i++)
 
 //UI
 cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[ Game ]~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+cout << "Player: " << seth->getName() << endl;
   if(seth->getRole() != "Spy")
   {
     cout << "The location is: " << yourLocation.getName() << endl;
@@ -164,8 +165,8 @@ cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[ Game ]~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" <<
 
 
   cout << endl;
-  cout << "~~~~~~~~~~~~~~~~~~~~~~~[ DEV KNOWLEDGE ]~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-  cout << "Spy: " << spy->getName() << endl << spy->getRole() << endl << spy->isSpy() << endl;
+  cout << "~~~~~~~~~~~~~~~~~~~~[ DEV/PROGRAMMER KNOWLEDGE ]~~~~~~~~~~~~~~~~~~~~~~" << endl;
+  cout << "Spy: " << spy->getName() << endl << "-------------------" << endl;
   cout << "Seth: " << seth->getName() << endl << seth->getRole() << endl << seth->isSpy() << endl;
   cout << "Bryan: " << bryan->getName() << endl << bryan->getRole() << endl << bryan->isSpy() << endl;
   cout << "Chester: " << chester->getName() << endl << chester->getRole() << endl << chester->isSpy() << endl;
