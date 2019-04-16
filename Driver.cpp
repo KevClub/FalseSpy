@@ -146,7 +146,9 @@ for(int i =0; i < numPlayers; i++)
 
 //UI
 cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[ Game ]~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-cout << "Player: " << seth->getName() << endl;
+cout << "Player: " << seth->getName() << endl << "# Players: " << numPlayers << endl;
+cout  << endl << endl;
+
   if(seth->getRole() != "Spy")
   {
     cout << "The location is: " << yourLocation.getName() << endl;
@@ -167,9 +169,9 @@ cout << "Player: " << seth->getName() << endl;
   cout << endl;
   cout << "~~~~~~~~~~~~~~~~~~~~[ DEV/PROGRAMMER KNOWLEDGE ]~~~~~~~~~~~~~~~~~~~~~~" << endl;
   cout << "Spy: " << spy->getName() << endl << "-------------------" << endl;
-  cout << "Seth: " << seth->getName() << endl << seth->getRole() << endl << seth->isSpy() << endl;
-  cout << "Bryan: " << bryan->getName() << endl << bryan->getRole() << endl << bryan->isSpy() << endl;
-  cout << "Chester: " << chester->getName() << endl << chester->getRole() << endl << chester->isSpy() << endl;
+  cout << "P1: " << seth->getName() << endl << seth->getRole() << endl << seth->isSpy() << endl;
+  cout << "P2: " << bryan->getName() << endl << bryan->getRole() << endl << bryan->isSpy() << endl;
+  cout << "P3: " << chester->getName() << endl << chester->getRole() << endl << chester->isSpy() << endl;
 
 
 delete spy;
@@ -178,6 +180,7 @@ delete chester;
 delete seth;
 //delete players;
 
+  system("PAUSE");
   return 0;
 }
 
