@@ -154,6 +154,11 @@ cout  << endl << endl;
     cout << "The location is: " << yourLocation.getName() << endl;
     cout << "Description: " << yourLocation.getDesc() << endl;
     cout << "Your role is: " << seth->getRole() << endl;
+    cout << endl << "Places:" << endl;
+    for(int i =0; i < LOCATION_SIZE; i++)
+    {
+      cout << i+1 << " " << locations[i].getName() << endl;
+    }
     cout << endl << "The game plays out..." << endl << endl;
     cout << "The spy was: " << spy->getName() << endl;
   }
@@ -161,6 +166,11 @@ cout  << endl << endl;
   {
     cout << "Your role is: " << seth->getRole() << endl;
     cout << "Try and guess the location without being caught." << endl;
+    cout << endl << "Places:" << endl;
+    for(int i =0; i < LOCATION_SIZE; i++)
+    {
+      cout << i+1 << " " << locations[i].getName() << endl;
+    }
     cout << endl << "The game plays out..." << endl << endl;
     cout << "The spy was: You" << endl;
   }
